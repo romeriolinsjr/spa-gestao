@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPA Gestão | Login</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- TELA DE LOGIN -->
+    <div id="auth-container">
+      <div class="login-box">
+        <h1>Sal, Pimenta e Açúcar</h1>
+        <p>Faça login para continuar</p>
+        <input
+          type="email"
+          id="email"
+          placeholder="Seu e-mail"
+          class="form-input"
+        />
+        <input
+          type="password"
+          id="password"
+          placeholder="Sua senha"
+          class="form-input"
+        />
+        <button id="login-button" class="btn-primary">Entrar</button>
+        <button id="signup-button" class="btn-secondary">Criar Conta</button>
+        <p id="auth-error" class="error-message"></p>
+      </div>
+    </div>
+
+    <!-- APLICAÇÃO PRINCIPAL (INICIALMENTE ESCONDIDA) -->
+    <div id="app-container" style="display: none">
+      <div class="sidebar">
+        <h2>Menu</h2>
+        <ul>
+          <li><a href="#" id="fichaTecnicaMenu">Ficha Técnica</a></li>
+          <li><a href="#" id="insumosMenu">Insumos</a></li>
+          <li>
+            <a href="#" id="acompanhamentoPrecosMenu"
+              >Acompanhamento de Preços</a
+            >
+          </li>
+          <li>
+            <a href="#" id="correcaoReferenciaMenu">Correção de Referência</a>
+          </li>
+          <li>
+            <a href="#" id="lancamentoPedidosMenu">Lançamento de Pedidos</a>
+          </li>
+        </ul>
+        <div class="sidebar-footer">
+          <span id="user-email"></span>
+          <button id="logout-button">Sair</button>
+        </div>
+      </div>
+      <div class="main-content">
+        <header>
+          <h1>Bem-vindo ao seu Sistema de Gestão</h1>
+        </header>
+        <main id="content">
+          <!-- O conteúdo será carregado aqui via JavaScript -->
+        </main>
+      </div>
+    </div>
+
+    <!-- SCRIPTS DO FIREBASE (ATUALIZADO) -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+      // Importações necessárias para Autenticação
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        onAuthStateChanged,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+      // ATUALIZADO: Importações necessárias para o Firestore
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+        getDocs,
+        query,
+        where,
+        doc,
+        updateDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      // Sua configuração do Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyBmfq6sgrPIidi2YN9BdD-TNHEw39ixza8",
+        authDomain: "spagestao-cfee4.firebaseapp.com",
+        projectId: "spagestao-cfee4",
+        storageBucket: "spagestao-cfee4.appspot.com",
+        messagingSenderId: "1059920279289",
+        appId: "1:1059920279289:web:93d61214d2e17314ded428",
+        measurementId: "G-RYGB4GVW3Z",
+      };
+
+      // Inicializa o Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const db = getFirestore(app);
+
+      // ATUALIZADO: Disponibiliza TODAS as funções necessárias para os outros scripts
+      window.firebase = {
+        auth,
+        db,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        onAuthStateChanged,
+        signOut,
+        collection,
+        addDoc,
+        getDocs,
+        query,
+        where,
+        doc,
+        updateDoc,
+      };
+    </script>
+
+    <!-- NOSSOS SCRIPTS -->
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

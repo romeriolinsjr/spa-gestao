@@ -1,0 +1,420 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  display: flex;
+  background-color: #f4f4f4;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #e0b0ff; /* Lilás claro */
+  color: #333; /* Texto escuro */
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  position: fixed; /* <<< MUDANÇA PRINCIPAL: Fixa o menu na tela */
+  top: 0;
+  left: 0;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.sidebar ul li a:hover {
+  background-color: #d291ff;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  margin-left: 250px; /* <<< MUDANÇA: Empurra o conteúdo para a direita para não ficar atrás do menu */
+  height: 100vh; /* <<< MUDANÇA: Define a altura para a rolagem funcionar corretamente */
+  overflow-y: auto; /* <<< MUDANÇA: Adiciona a barra de rolagem apenas nesta área */
+  box-sizing: border-box;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+#content button {
+  background-color: #77dd77; /* Verde claro */
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+#content button:hover {
+  background-color: #6ac46a;
+}
+
+/* --- ESTILOS DO FORMULÁRIO DA FICHA TÉCNICA --- */
+.form-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-section {
+  margin-bottom: 25px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.form-section:last-child {
+  border-bottom: none;
+}
+
+.form-section h3 {
+  color: #8a2be2; /* Lilás escuro */
+  margin-top: 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+textarea.form-input {
+  resize: vertical;
+}
+
+/* --- ESTILOS DA TABELA DE INSUMOS --- */
+.insumos-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.insumos-table th,
+.insumos-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.insumos-table th {
+  background-color: #f2f2f2;
+  font-size: 14px;
+}
+
+.insumos-table td input {
+  margin-bottom: 0;
+}
+
+/* --- ESTILOS PARA BOTÕES ADICIONAIS --- */
+.btn-secondary {
+  background-color: #888;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: #666;
+}
+
+.btn-primary {
+  background-color: #8a2be2; /* Lilás escuro */
+  color: white;
+  padding: 15px 32px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  display: block;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background-color: #7925c6;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #eee;
+  margin: 20px 0;
+}
+
+/* --- ESTILOS DA LISTA DE FICHAS SALVAS --- */
+#listaFichasTecnicas {
+  margin-top: 30px;
+}
+
+#listaFichasTecnicas h3 {
+  color: #555;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.ficha-card {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.ficha-card h4 {
+  margin: 0 0 5px 0;
+  color: #8a2be2;
+}
+
+.ficha-card p {
+  margin: 0;
+  color: #666;
+}
+
+/* --- ESTILOS PARA INTERATIVIDADE E VISUALIZAÇÃO --- */
+.clickable {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.clickable:hover {
+  background-color: #f9f9f9;
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+  background-color: #f2f2f2;
+  color: #333;
+  border: 1px solid #ddd;
+  cursor: not-allowed;
+}
+
+/* --- ESTILOS DA TELA DE LOGIN --- */
+#auth-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f2f5;
+}
+
+.login-box {
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-box h1 {
+  color: #8a2be2;
+  margin-top: 0;
+}
+
+.login-box .form-input {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.login-box .btn-primary,
+.login-box .btn-secondary {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: #d8000c;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+/* Esconde o app container por padrão */
+#app-container {
+  display: none;
+  width: 100%;
+}
+
+/* ESTILOS PARA O RODAPÉ DO MENU LATERAL (CORRIGIDO) */
+.sidebar-footer {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  text-align: center;
+}
+
+#logout-button {
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+#logout-button:hover {
+  background-color: #a93226;
+}
+
+#user-email {
+  display: block;
+  word-wrap: break-word;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* --- ESTILOS PARA A NOVA VISUALIZAÇÃO DA FICHA TÉCNICA --- */
+
+.ficha-view-container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #eee;
+}
+
+.ficha-header {
+  text-align: center;
+  border-bottom: 2px solid #e0b0ff; /* Lilás claro */
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.ficha-header h2 {
+  margin: 0;
+  font-size: 28px;
+  color: #333;
+}
+
+.ficha-header p {
+  margin: 5px 0 0 0;
+  font-size: 16px;
+  color: #8a2be2; /* Lilás escuro */
+  font-weight: bold;
+}
+
+.ficha-section {
+  margin-bottom: 25px;
+}
+
+.ficha-section h3 {
+  font-size: 18px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+.financial-summary {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.summary-box {
+  flex: 1;
+  min-width: 250px;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #eee;
+}
+
+.summary-box h4 {
+  margin-top: 0;
+  color: #8a2be2;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed #ddd;
+  font-size: 15px;
+}
+
+.summary-item:last-child {
+  border-bottom: none;
+}
+
+.summary-item strong {
+  color: #333;
+  font-weight: bold;
+}
+
+.modo-preparo-view {
+  white-space: pre-wrap;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  line-height: 1.6;
+}
+
+.view-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.view-table th,
+.view-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+.view-table th {
+  background-color: #f2f2f2;
+}
+.view-table tfoot td {
+  font-weight: bold;
+  text-align: right;
+  background-color: #f2f2f2;
+}
+
+/* --- Estilos para a Tela de Detalhes --- */
+.details-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.details-actions .btn-primary,
+.details-actions .btn-secondary {
+  width: auto;
+  flex-grow: 1;
+}
